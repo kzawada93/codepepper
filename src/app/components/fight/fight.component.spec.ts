@@ -19,7 +19,7 @@ describe('FightComponent', () => {
   it('#constructor', () => {
     expect(component.selectedFightType).toBe('PERSON');
     expect(component.attributeTypes).toEqual(Person.getComparableParams());
-    expect(component.selectedAttributeType).toBeNull();
+    expect(component.selectedAttributeType).toBe(component.attributeTypes[0].param);
   });
 
   describe('#setScore', () => {
