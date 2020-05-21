@@ -1,0 +1,80 @@
+<div class="d-flex align-items-center justify-content-center flex-column vh-100 bg">
+  <div class="d-flex">
+    <div class="select-container">
+      <mat-form-field class="mat-focused">
+        <mat-label>Select fight type*</mat-label>
+        <mat-select [(ngModel)]="selectedFightType" (ngModelChange)="selectedFightTypeChange($event)">
+          <mat-option *ngFor="let type of fightTypes" [value]="type">{{type}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="select-container">
+      <mat-form-field class="mat-focused">
+        <mat-label>Select attribute*</mat-label>
+        <mat-select [(ngModel)]="selectedAttributeType">
+          <mat-option *ngFor="let attr of attributeTypes" [value]="attr.param">{{attr.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div>
+    <button mat-flat-button color="primary" (click)="performFight()"
+            [disabled]="!selectedFightType || !selectedAttributeType || xhr">FIGHT!</button>
+  </div>
+  <div>
+    <div class="d-flex justify-content-center mt-3">
+      <span [hidden]="!winner">WINNER: {{winner}}</span>
+    </div>
+    <br>
+    <div [ngSwitch]="selectedFightType">
+      <div *ngSwitchCase="'PERSON'" class="d-flex">
+        <div class="p-3">
+          <app-person-card [attribute]="selectedAttributeType" (score)="setScore($event, '1')"
+                           [additionalBodyClasses]="'text-right'" [bodyText]="'Player1'"
+                           [resultClass]="firstPlayerResultClass"
+                           #firstPlayerCard></app-person-card>
+        </div>
+        <div class="p-3">
+          <app-person-card [attribute]="selectedAttributeType" [additionalHeaderClasses]="'text-right'"
+                           [bodyText]="'Player2'" [resultClass]="secondPlayerResultClass"
+                           (score)="setScore($event, '2')" #secondPlayerCard></app-person-card>
+        </div>
+      </div>
+      <div *ngSwitchCase="'PLANET'" class="d-flex">
+        <div class="p-3">
+          <app-planet-card [attribute]="selectedAttributeType" (score)="setScore($event, '1')"
+                           [resultClass]="firstPlayerResultClass"
+                           [additionalBodyClasses]="'text-right'" [bodyText]="'Player1'"
+                           #firstPlayerCard></app-planet-card>
+        </div>
+        <div class="p-3">
+          <app-planet-card [attribute]="selectedAttributeType" [additionalHeaderClasses]="'text-right'"
+                           [bodyText]="'Player2'" [resultClass]="secondPlayerResultClass"
+                           (score)="setScore($event, '2')" #secondPlayerCard></app-planet-card>
+        </div>
+      </div>
+      <div *ngSwitchCase="'STARSHIP'" class="d-flex">
+        <div class="p-3">
+          <app-starship-card [attribute]="selectedAttributeType" (score)="setScore($event, '1')"
+                             [additionalBodyClasses]="'text-right'" [bodyText]="'Player1'"
+                             [resultClass]="firstPlayerResultClass"
+                             #firstPlayerCard></app-starship-card>
+        </div>
+        <div class="p-3">
+          <app-starship-card [attribute]="selectedAttributeType" [additionalHeaderClasses]="'text-right'"
+                             [bodyText]="'Player2'" [resultClass]="secondPlayerResultClass"
+                             (score)="setScore($event, '2')" #secondPlayerCard></app-starship-card>
+        </div>
+      </div>
+
+    </div>
+    <div class="d-flex justify-content-center align-items-center font-30pt" >
+      <span [hidden]="!firstPlayerScore && !secondPlayerScore">{{firstPlayerScore}} : {{secondPlayerScore}}</span>
+    </div>
+  </div>
+</div>
+
+
+
+
+

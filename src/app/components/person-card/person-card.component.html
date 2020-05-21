@@ -1,0 +1,16 @@
+<mat-card class="app-card {{resultClass}}" [hidden]="!person">
+  <mat-card-header class="{{additionalHeaderClasses}}">
+    <mat-card-title>{{person?.name}}</mat-card-title>
+    <mat-card-subtitle>{{person ? (person[currentAttribute]) : ''}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <hr>
+    <div class="additional-info">
+      <p>Hair color: <b>{{person?.hairColor}}</b></p>
+      <p>Birth year: <b>{{person?.birthYear}}</b></p>
+      <p>Gender: <b>{{person?.gender}}</b></p>
+    </div>
+    <hr>
+    <p class="{{additionalBodyClasses}}">{{bodyText}}</p>
+  </mat-card-content>
+</mat-card>

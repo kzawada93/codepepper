@@ -1,0 +1,14 @@
+<mat-card class="app-card {{resultClass}}" [hidden]="!planet">
+  <mat-card-header class="{{additionalHeaderClasses}}">
+    <mat-card-title>{{planet?.name}}</mat-card-title>
+    <mat-card-subtitle>{{planet ? (planet[currentAttribute]) : ''}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="{{additionalBodyClasses}}">
+    <hr>
+    <div class="additional-info">
+      <p>Climate: <b>{{planet?.climate}}</b></p>
+    </div>
+    <hr>
+    <p>{{bodyText}}</p>
+  </mat-card-content>
+</mat-card>

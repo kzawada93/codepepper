@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  color: yellow !important;
+  font-family: 'Press Start 2P', cursive !important;
+}
+
+$star_wars_blue: #9de2f4;
+$star_wars_blue_dark: #169ac6;
+$star_wars_red: #ef665c;
+$star_wars_red_dark: #d73022;
+
+.mat-card.app-card{
+  width:500px;
+  color: yellow !important;
+  background: rgba(255,255,255,0.2) !important;
+  font-family: 'Press Start 2P', cursive !important;
+  display: flex;
+  flex-direction: column;
+  .mat-card-subtitle {
+    color: #FFFFFF;
+  }
+  .mat-card-content{
+    .additional-info{
+      color: #FFF;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    hr {
+      border-top: 1px solid rgba(yellow, 0.1);
+    }
+  }
+  .mat-card-header-text{
+    width: 100%;
+  }
+  &.winning {
+    border: 2px solid $star_wars_blue_dark;
+    box-shadow: 0px -1px 20px 0px $star_wars_blue !important;
+  }
+
+  &.loosing {
+    border: 2px solid $star_wars_red_dark;
+    box-shadow: 0px -1px 20px 0px $star_wars_red !important;
+  }
+}
+
+.font-30pt{
+  font-size: 30pt;
+}
+
+//style overrides
+.mat-flat-button.mat-primary{
+  background: rgba(255,255,255,0.2);
+  font-family: 'Press Start 2P', cursive !important;
+}
+.mat-select-value-text{
+  color: yellow;
+  font-family: 'Press Start 2P', cursive !important;
+}
+
+@import '~@angular/material/theming';
+@include mat-core();
+$candy-app-primary: mat-palette($mat-yellow);
+$candy-app-accent:  mat-palette($mat-yellow, A200, A100, A400);
+$candy-app-warn:    mat-palette($mat-yellow);
+$candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+@include angular-material-theme($candy-app-theme);

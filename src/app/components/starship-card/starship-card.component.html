@@ -1,0 +1,14 @@
+<mat-card class="app-card {{resultClass}}" [hidden]="!starship">
+  <mat-card-header class="{{additionalHeaderClasses}}">
+    <mat-card-title>{{starship?.name}}</mat-card-title>
+    <mat-card-subtitle>{{starship ? (starship[currentAttribute]) : ''}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="{{additionalBodyClasses}}">
+    <hr>
+    <div class="additional-info">
+      <p>Model: <b>{{starship?.model}}</b></p>
+    </div>
+    <hr>
+    <p>{{bodyText}}</p>
+  </mat-card-content>
+</mat-card>
